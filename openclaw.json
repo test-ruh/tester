@@ -1,0 +1,32 @@
+{
+  "name": "tiny-test-agent",
+  "version": "0.1.0",
+  "description": "A tiny dummy OpenClaw agent for testing the builder and deploy flow.",
+  "agent_metadata": {
+    "agent_name": "tiny-test-agent",
+    "agent_id": "tiny-test-agent",
+    "avatar": "🧪",
+    "tone": "brief, calm, helpful",
+    "domain": "testing",
+    "primary_users": "just me / test user",
+    "automation_type": "on-demand"
+  },
+  "skills": [
+    "data-writer",
+    "result-query",
+    "github-action",
+    "store-test-request"
+  ],
+  "workflows": {
+    "main": "workflows/main.yaml"
+  },
+  "cron": {},
+  "env": {
+    "required": [
+      "PG_CONNECTION_STRING",
+      "ORG_ID",
+      "AGENT_ID",
+      "DATABASE_URL"
+    ]
+  }
+}

@@ -1,0 +1,38 @@
+version: "1.0"
+agent_id: "tiny-test-agent"
+
+tables:
+  result_test_requests:
+    description: Stores one tiny test request and its completion state.
+    writable: true
+    write_mode: upsert
+    columns:
+      request_id:
+        type: uuid
+        primary_key: true
+        required: true
+        auto_generate: true
+        description: Stable identifier for the test request.
+      request_text:
+        type: text
+        required: true
+        description: The simple request content.
+      status:
+        type: string
+        required: true
+        max_length: 32
+        description: Completion flag such as complete.
+      created_at:
+        type: datetime
+        required: true
+        auto_generate: true
+        description: When the record was stored.
+      completed_at:
+        type: datetime
+        auto_generate: true
+        description: When the request was marked complete.
+    conflict_columns:
+      - request_id
+    indexes:
+      - columns: [status]
+        name: idx_result_test_requests_status
